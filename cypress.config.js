@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
+  projectId: 'wyg2aw',
   e2e: {
     baseUrl: 'https://automationpratice.com.br',
     specPattern: 'cypress/e2e/**/*.cy.js',

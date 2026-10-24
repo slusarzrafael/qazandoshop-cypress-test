@@ -10,8 +10,17 @@ permissions:
   contents: read
 
 jobs:
-  e2e:
+  cypress-run:
     runs-on: ubuntu-latest
+    environment: CYPRESS_RECORD_KEY
+    strategy:
+      # Evita que o Cypress Cloud fique "em execução" se um worker falhar (cypress-io/github-action#48)
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Baixar o repositório
         uses: actions/checkout@v4
@@ -20,10 +29,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
 
-      - name: Instalar dependências
-        run: npm ci
+      - name: Validar configuração do Cypress Cloud
+        run: |
+          test -n "$CYPRESS_RECORD_KEY" || { echo "::error::Configure o secret CYPRESS_RECORD_KEY no Environment CYPRESS_RECORD_KEY."; exit 1; }
 
-      - name: Executar todos os testes E2E
-        run: npm run cy:run
+      - name: Executar testes E2E no Cypress Cloud
+        uses: cypress-io/github-action@v7
+        with:
+          record: true
+          parallel: true
+          group: 'Suíte completa'

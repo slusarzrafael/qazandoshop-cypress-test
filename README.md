@@ -49,3 +49,13 @@ Os specs ficam em `cypress/e2e/`. Vídeos e screenshots de falhas são salvos em
 ## GitHub Actions
 
 O workflow em `.github/workflows/cypress.yml` executa a suíte completa em cada `push` e diariamente às 15:00 e 17:30 no horário de Brasília. Para ver as execuções, abra a aba **Actions** do repositório e selecione **Cypress E2E**. O cron do GitHub usa UTC; o workflow converte os horários para UTC-3.
+
+### Cypress Cloud
+
+O workflow grava os resultados no Cypress Cloud. Para ativar o vínculo:
+
+1. O Project ID do Cypress Cloud (`wyg2aw`) já está em `cypress.config.js`.
+2. No Environment `CYPRESS_RECORD_KEY`, adicione o secret `CYPRESS_RECORD_KEY` com a Record Key do projeto.
+3. Faça um `push` ou execute o workflow pela aba **Actions**.
+
+O Project ID é público. A Record Key é secreta e não deve ser commitada nem compartilhada no código. Execuções locais continuam funcionando sem essas configurações; o modo de gravação é usado pelo GitHub Actions.
