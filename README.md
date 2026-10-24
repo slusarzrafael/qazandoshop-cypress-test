@@ -1,0 +1,51 @@
+# Automação E2E com Cypress
+
+Este repositório contém testes E2E da loja QAZANDO para fins de estudo e prática de automação com Cypress.
+
+## Requisitos
+
+- Node.js 24
+- npm
+
+## Instalação
+
+```bash
+git clone https://github.com/slusarzrafael/qazandoshop-cypress-test.git
+cd qazandoshop-cypress-test
+npm ci
+```
+
+## Executar os testes
+
+Todos os testes:
+
+```bash
+npm run cy:run
+```
+
+Uma suíte específica:
+
+| Suíte | Comando |
+|---|---|
+| Acessibilidade | `npm run cy:run:a11y` |
+| Carrinho | `npm run cy:run:carrinho` |
+| Catálogo | `npm run cy:run:catalogo` |
+| Checkout | `npm run cy:run:checkout` |
+| Conta e autenticação | `npm run cy:run:conta` |
+| Contato | `npm run cy:run:contato` |
+| FAQ | `npm run cy:run -- --spec cypress/e2e/faq/faq.cy.js` |
+| Navegação | `npm run cy:run:navegacao` |
+| Rastreamento de pedidos | `npm run cy:run:pedidos` |
+| Responsividade | `npm run cy:run:responsivo` |
+
+Para abrir o Cypress e executar visualmente:
+
+```bash
+npm run cy:open
+```
+
+Os specs ficam em `cypress/e2e/`. Vídeos e screenshots de falhas são salvos em `cypress/videos/` e `cypress/screenshots/`.
+
+## GitHub Actions
+
+O workflow em `.github/workflows/cypress.yml` executa a suíte completa em cada `push` e diariamente às 15:00 e 17:30 no horário de Brasília. Para ver as execuções, abra a aba **Actions** do repositório e selecione **Cypress E2E**. O cron do GitHub usa UTC; o workflow converte os horários para UTC-3.
