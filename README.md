@@ -52,6 +52,10 @@ O workflow em `.github/workflows/cypress.yml` executa a suíte completa em cada 
 
 ### Cypress Cloud
 
+As execuções do CI também ficam disponíveis publicamente no Cypress Cloud, com resultados, erros, screenshots e vídeos de cada spec:
+
+**[Ver execuções no Cypress Cloud](https://cloud.cypress.io/projects/wyg2aw/runs)**
+
 O workflow grava os resultados no Cypress Cloud. Para ativar o vínculo:
 
 1. O Project ID do Cypress Cloud (`wyg2aw`) já está em `cypress.config.js`.
