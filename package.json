@@ -1,0 +1,38 @@
+{
+  "name": "qazandoshop-cypress-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:smoke": "cypress run --expose grepTags=@smoke",
+    "cy:run:regressao": "cypress run --expose grepTags=@regressao",
+    "cy:run:a11y": "cypress run --expose grepTags=@a11y",
+    "cy:run:responsivo": "cypress run --expose grepTags=@responsivo",
+    "cy:run:navegacao": "cypress run --spec cypress/e2e/navegacao/navegacao.cy.js",
+    "cy:run:conta": "cypress run --spec cypress/e2e/conta/autenticacao.cy.js",
+    "cy:run:contato": "cypress run --spec cypress/e2e/contato/contato.cy.js",
+    "cy:run:catalogo": "cypress run --spec cypress/e2e/catalogo/catalogo.cy.js",
+    "cy:run:carrinho": "cypress run --spec cypress/e2e/carrinho/carrinho.cy.js",
+    "cy:run:pedidos": "cypress run --spec cypress/e2e/pedidos/rastreamento.cy.js",
+    "cy:run:checkout": "cypress run --spec cypress/e2e/checkout/checkout.cy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slusarzrafael/qazandoshop-cypress-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/slusarzrafael/qazandoshop-cypress-test/issues"
+  },
+  "homepage": "https://github.com/slusarzrafael/qazandoshop-cypress-test#readme",
+  "devDependencies": {
+    "@cypress/grep": "^7.0.0",
+    "cypress": "^16.2.0"
+  }
+}
