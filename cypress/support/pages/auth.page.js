@@ -10,9 +10,12 @@ class AuthPage {
   submitLogin() { cy.get('#btnLogin').click(); }
 
   fillRegistration(name, email, password) {
-    cy.get('#user').clear().type(name);
-    cy.get('#email').clear().type(email);
-    cy.get('#password').clear().type(password);
+    cy.get('#user').clear();
+    if (name) cy.get('#user').type(name);
+    cy.get('#email').clear();
+    if (email) cy.get('#email').type(email);
+    cy.get('#password').clear();
+    if (password) cy.get('#password').type(password);
   }
 
   submitRegistration() { cy.get('#btnRegister').click(); }

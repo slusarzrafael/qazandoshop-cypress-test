@@ -11,9 +11,9 @@ describe('Catálogo e produtos', () => {
   it('incrementa e decrementa quantidade e adiciona produto', { tags: ['@smoke', '@regressao'] }, () => {
     StorePage.visitProduct(1);
     StorePage.quantity().should('have.value', '1');
-    cy.get('.plus-minus-input button').first().click();
+    StorePage.incrementQuantity();
     StorePage.quantity().should('have.value', '2');
-    cy.get('.plus-minus-input button').last().click();
+    StorePage.decrementQuantity();
     StorePage.quantity().should('have.value', '1');
     StorePage.addToCart();
     cy.contains('.swal2-popup', 'Successfully added to your Cart').should('be.visible');

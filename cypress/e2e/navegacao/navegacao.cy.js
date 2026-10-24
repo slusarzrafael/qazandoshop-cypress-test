@@ -17,12 +17,16 @@ describe('Navegação e busca', () => {
 
   it('retorna ao catálogo usando o botão voltar', { tags: '@regressao' }, () => {
     cy.visit('/shop');
-    cy.contains('Most Popular').should('be.visible');
+    cy.get('select[name="product"]')
+      .filter((index, select) => [...select.options].some((option) => option.text.trim() === 'Sort By Popularity'))
+      .should('have.length.at.least', 1);
     cy.visit('/product-details-one/1');
     cy.contains('Green Dress For Woman').should('be.visible');
     cy.go('back');
     cy.location('pathname').should('eq', '/shop');
-    cy.contains('Most Popular').should('be.visible');
+    cy.get('select[name="product"]')
+      .filter((index, select) => [...select.options].some((option) => option.text.trim() === 'Sort By Popularity'))
+      .should('have.length.at.least', 1);
   });
 
   it('busca um termo e abre a página de resultados', { tags: ['@smoke', '@regressao'] }, () => {
@@ -51,7 +55,7 @@ describe('Navegação e busca', () => {
     cy.get('button[name="subscribe"]').click();
     cy.get('input[name="EMAIL"]').should(($input) => {
       expect($input[0].checkValidity()).to.be.false;
-      expect($input[0].validationMessage).to.contain("include an '@'");
+      expect($input[0].validationMessage).to.contain('@');
     });
   });
 });

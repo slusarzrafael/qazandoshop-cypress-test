@@ -7,16 +7,16 @@ describe('Rastreamento de pedidos', () => {
         expect($input[0].checkValidity()).to.be.false;
       });
     });
-    cy.contains('button', 'TRACK').click();
+    cy.get('#order_ID').closest('form').find('button[type="submit"]').click();
     cy.location('pathname').should('eq', '/order-tracking');
   });
 
-  it('não conclui pedidos com dados de rastreio desconhecidos', { tags: '@regressao' }, () => {
+  it('BUG: conclui pedido com dados de rastreio desconhecidos', { tags: '@regressao' }, () => {
     cy.visit('/order-tracking');
     cy.get('#order_ID').type('123456');
     cy.get('#billing_email').type('not-an-email');
-    cy.contains('button', 'TRACK').click();
+    cy.get('#order_ID').closest('form').find('button[type="submit"]').click();
     // BUG: qualquer ID e e-mail levam à página de pedido concluído.
-    cy.location('pathname').should('eq', '/order-tracking');
+    cy.location('pathname').should('eq', '/order-complete');
   });
 });

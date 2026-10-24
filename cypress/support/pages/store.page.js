@@ -1,7 +1,9 @@
 class StorePage {
   visitProduct(productId) { cy.visit(`/product-details-one/${productId}`); }
-  quantity() { return cy.get('.plus-minus-input input[type="number"]'); }
-  addToCart() { cy.contains('a', 'ADD TO CART').click(); }
+  quantity() { return cy.get('.product_count_one .plus-minus-input input[type="number"]'); }
+  incrementQuantity() { cy.get('.product_count_one .fa-plus').click(); }
+  decrementQuantity() { cy.get('.product_count_one .fa-minus').click(); }
+  addToCart() { cy.get('a.theme-btn-one.btn-black-overlay.btn_sm[href="#!"]').click(); }
   visitContact() { cy.visit('/contact-two'); }
 
   fillContact({ name, email, phone, subject, message }) {
@@ -12,7 +14,7 @@ class StorePage {
     cy.get('textarea[name="message"]').clear().type(message);
   }
 
-  submitContact() { cy.contains('button', 'SUBMIT').click(); }
+  submitContact() { cy.contains('button', /^Submit$/i).click(); }
 }
 
 module.exports = new StorePage();

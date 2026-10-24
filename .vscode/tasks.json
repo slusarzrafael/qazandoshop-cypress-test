@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Cypress: catálogo (execução isolada)",
+			"type": "shell",
+			"command": "npx.cmd",
+			"args": [
+				"cypress",
+				"run",
+				"--spec",
+				"cypress/e2e/catalogo/catalogo.cy.js"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Cypress catálogo cmd",
+			"type": "shell",
+			"command": "npx.cmd",
+			"args": [
+				"cypress",
+				"run",
+				"--spec",
+				"cypress/e2e/catalogo/catalogo.cy.js"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Cypress: todos os testes E2E",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"cy:run"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

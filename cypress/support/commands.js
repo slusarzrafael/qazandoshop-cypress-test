@@ -26,20 +26,22 @@
 
 Cypress.Commands.add('registerDynamicUser', () => {
 	const timestamp = Date.now();
-	const user = {
-		name: Cypress.env('userName') || 'QA Cypress',
-		email: `user_${timestamp}@teste.com`,
-		password: Cypress.env('userPassword') || String(timestamp).slice(-8),
-	};
+	return cy.env(['userName', 'userPassword']).then(({ userName, userPassword }) => {
+		const user = {
+			name: userName || 'QA Cypress',
+			email: `user_${timestamp}@teste.com`,
+			password: userPassword || String(timestamp).slice(-8),
+		};
 
-	cy.visit('/register');
-	cy.get('#user').type(user.name);
-	cy.get('#email').type(user.email);
-	cy.get('#password').type(user.password);
-	cy.get('#btnRegister').click();
-	cy.get('.swal2-popup').should('contain.text', 'Cadastro realizado!');
-	cy.get('.swal2-confirm').click();
-	return cy.wrap(user, { log: false });
+		cy.visit('/register');
+		cy.get('#user').type(user.name);
+		cy.get('#email').type(user.email);
+		cy.get('#password').type(user.password);
+		cy.get('#btnRegister').click();
+		cy.get('.swal2-popup').should('contain.text', 'Cadastro realizado!');
+		cy.get('.swal2-confirm').click();
+		return cy.wrap(user, { log: false });
+	});
 });
 
 Cypress.Commands.add('loginWithSession', (email, password) => {

@@ -14,6 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+require('cypress-real-events/support');
 require('./commands');
 
 const { register } = require('@cypress/grep');
