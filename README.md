@@ -48,7 +48,7 @@ Os specs ficam em `cypress/e2e/`. Vídeos e screenshots de falhas são salvos em
 
 ## GitHub Actions
 
-O workflow em `.github/workflows/cypress.yml` executa a suíte completa em cada `push` e diariamente às 15:00 e 17:30 no horário de Brasília. Para ver as execuções, abra a aba **Actions** do repositório e selecione **Cypress E2E**. O cron do GitHub usa UTC; o workflow converte os horários para UTC-3.
+O workflow em `.github/workflows/cypress.yml` executa a suíte completa em cada `push`. Para ver as execuções, abra a aba **Actions** do repositório e selecione **Cypress E2E**.
 
 ### Cypress Cloud
 

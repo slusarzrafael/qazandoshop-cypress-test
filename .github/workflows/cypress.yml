@@ -2,9 +2,6 @@ name: Cypress E2E
 
 on:
   push:
-  schedule:
-    - cron: '0 18 * * *' # 15:00 America/Sao_Paulo (UTC-3)
-    - cron: '30 20 * * *' # 17:30 America/Sao_Paulo (UTC-3)
 
 permissions:
   contents: read
